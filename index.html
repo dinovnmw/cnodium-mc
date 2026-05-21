@@ -208,7 +208,7 @@
                     <!-- Virtual HUD Header -->
                     <div class="flex items-center justify-between border-b border-zinc-800 pb-3 mb-3 font-mono text-xs" style="transform: translateZ(20px);">
                         <span class="text-purple-500 font-bold">CNODIUM v1.0</span>
-                        <span class="text-zinc-500">FPS: <strong class="text-green-500 font-normal">240</strong></span>
+                        <span class="text-zinc-500">FPS: <strong class="text-green-400 font-normal">240</strong></span>
                     </div>
 
                     <!-- Client Mock modules stack -->
@@ -557,8 +557,8 @@
             '3fmc Network',
             'LuckyMC',
             'BlocksMC',
-            'HeoMC'
-            'SMP Sever'
+            'HeoMC',
+            'SMP Sever',
             'Bedwars Sever'
         ];
         let currentServerIndex = 0;
@@ -682,7 +682,7 @@
             ctx.lineWidth = 1;
             const grid = 80;
             for(let x=0; x < w; x+=grid) {
-                ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke();
+                ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); stroke();
             }
             for(let y=0; y < h; y+=grid) {
                 ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke();
