@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CNODIUM Client - Nâng Tầm Trải Nghiệm Minecraft</title>
+    <title>CNODIUM Client | Minecraft </title>
     
-    <!-- Tailwind CSS cho bố cục hiện đại -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts & FontAwesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <script>
@@ -18,11 +18,11 @@
                     colors: {
                         brand: {
                             cyan: '#06b6d4',
-                            purple: '#a855f7',
-                            pink: '#ec4899',
-                            dark: '#020104',
-                            panel: '#111016',
-                            panelLight: '#15141c'
+                            purple: '#8b5cf6',
+                            pink: '#db2777',
+                            dark: '#09090b',
+                            panel: '#111015',
+                            panelLight: '#16151a'
                         }
                     },
                     fontFamily: {
@@ -39,89 +39,71 @@
             scroll-behavior: smooth;
         }
         body {
-            background-color: #020104;
+            background-color: #09090b;
             overflow-x: hidden;
         }
-        /* Thanh cuộn tùy chỉnh */
+        /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #040306;
+            background: #09090b;
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #a855f7, #06b6d4);
-            border-radius: 4px;
+            background: #27272a;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
         }
         
-        /* Hiệu ứng kính mờ (Glassmorphism) */
-        .glass-card {
-            background: rgba(12, 10, 20, 0.45);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        /* Minimalist Solid Panels */
+        .flat-card {
+            background: #18181b;
+            border: 1px solid #27272a;
         }
-        .glass-nav {
-            background: rgba(4, 3, 7, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        .flat-nav {
+            background: rgba(9, 9, 11, 0.9);
+            border-bottom: 1px solid #1f1f23;
         }
 
-        /* Thiết lập chiều sâu 3D */
+        /* 3D Depth Setup - Kept simple but tilt responsive without glows */
         .perspective-container {
             perspective: 1500px;
         }
         .tilt-element {
             transform-style: preserve-3d;
-            transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s, box-shadow 0.3s;
+            transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.2s;
         }
 
-        /* Hiệu ứng đèn Neon phát sáng */
-        .neon-glow-purple {
-            box-shadow: 0 0 50px rgba(168, 85, 247, 0.25);
-        }
-        .text-neon {
-            text-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
-        }
-
-        /* Chữ chuyển màu Gradient */
-        .gradient-text {
-            background: linear-gradient(135deg, #06b6d4 10%, #a855f7 50%, #ec4899 90%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Nâng thẻ khi rê chuột */
+        /* Minimal Hover transition */
         .hover-lift {
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s, border-color 0.4s;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
         }
         .hover-lift:hover {
-            transform: translateY(-8px) scale(1.01);
-            border-color: rgba(168, 85, 247, 0.35);
-            box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
+            transform: translateY(-4px);
+            border-color: #3f3f46;
         }
 
-        /* Thanh cuộn ClickGUI */
+        /* Scrollbar inside GUI */
         .gui-scrollbar::-webkit-scrollbar {
-            width: 4px;
+            width: 3px;
         }
         .gui-scrollbar::-webkit-scrollbar-thumb {
-            background: #a855f7;
+            background: #3f3f46;
             border-radius: 9999px;
         }
 
-        /* Hiệu ứng hiện thông báo */
+        /* Toast notifications */
         .gui-notification {
-            animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         @keyframes slideIn {
-            from { transform: translateX(120%) scale(0.9); opacity: 0; }
+            from { transform: translateX(120%) scale(0.95); opacity: 0; }
             to { transform: translateX(0) scale(1); opacity: 1; }
         }
 
-        /* Mock Minecraft Head */
+        /* Player avatar head */
         .mc-head {
             background-color: #4a3b32;
             position: relative;
@@ -131,137 +113,135 @@
             position: absolute;
             top: 20%; left: 20%; width: 25%; height: 25%;
             background-color: #8c7d70;
-            box-shadow: 14px 0 0 #8c7d70;
+            box-shadow: 10px 0 0 #8c7d70;
+        }
+
+        /* Server fade animation transition */
+        .server-fade {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
     </style>
 </head>
-<body class="text-gray-100 font-sans antialiased selection:bg-purple-500 selection:text-white">
+<body class="text-zinc-200 font-sans antialiased selection:bg-zinc-700 selection:text-white">
 
-    <!-- 3D PARTICLE CANVAS BACKGROUND -->
-    <canvas id="bgCanvas" class="fixed inset-0 z-0 pointer-events-none opacity-45"></canvas>
+    <!-- FLAT GRID BACKGROUND CANVAS -->
+    <canvas id="bgCanvas" class="fixed inset-0 z-0 pointer-events-none opacity-20"></canvas>
 
     <!-- HEADER & NAVBAR -->
-    <header class="fixed top-0 left-0 w-full z-50 glass-nav">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <header class="fixed top-0 left-0 w-full z-50 flat-nav backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <!-- Logo -->
             <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-cyan via-brand-purple to-brand-pink p-[2px] shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-all">
-                    <div class="w-full h-full bg-[#020104] rounded-[10px] flex items-center justify-center">
-                        <span class="font-black text-lg text-transparent bg-clip-text bg-gradient-to-tr from-brand-cyan to-brand-pink">C</span>
-                    </div>
+                <div class="w-8 h-8 rounded-lg bg-zinc-800 border border-zinc-700 flex items-center justify-center transition-all group-hover:bg-zinc-700 group-active:scale-95">
+                    <span class="font-bold text-sm text-white">C</span>
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-bold text-xl tracking-tight leading-none">CNODIUM</span>
-                    <span class="text-[9px] text-gray-400 font-mono tracking-widest mt-1 uppercase">Next-Gen Client</span>
+                    <span class="font-bold text-base tracking-tight leading-none text-white">CNODIUM</span>
+                    <span class="text-[9px] text-zinc-500 font-mono tracking-wider mt-0.5 uppercase">Forge 1.8.9 (hoặc version khác cũng được)</span>
                 </div>
             </a>
 
-            <!-- Menu links -->
-            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-                <a href="#hero" class="hover:text-white transition-colors">Trang Chủ</a>
-                <a href="#features" class="hover:text-white transition-colors">Tính Năng</a>
-                <a href="#demo" class="hover:text-white transition-colors flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span> Trình Giả Lập</a>
-                <a href="#install" class="hover:text-white transition-colors">Cài Đặt</a>
-                <a href="https://github.com/dinovnmw/cnodium-mc/" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-github text-lg"></i></a>
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-mono text-zinc-400">
+                <a href="#hero" class="hover:text-white transition-colors">TRANG CHỦ</a>
+                <a href="#features" class="hover:text-white transition-colors">TÍNH NĂNG</a>
+                <a href="#demo" class="hover:text-white transition-colors flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse"></span> CLICKGUI WEB</a>
+                <a href="#install" class="hover:text-white transition-colors">CÀI ĐẶT</a>
+                <a href="https://github.com/dinovnmw/cnodium-mc" target="_blank" class="hover:text-white transition-colors hover:scale-110 active:scale-90"><i class="fa-brands fa-github text-base"></i></a>
             </nav>
 
-            <!-- Action buttons -->
-            <div class="flex items-center gap-4">
-                <a href="#demo" class="hidden sm:inline-flex px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all">
-                    Thử ClickGUI
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-3">
+                <a href="#demo" class="hidden sm:inline-flex px-3.5 py-1.5 bg-zinc-800 hover:bg-zinc-750 border border-zinc-700 hover:border-zinc-600 rounded-lg text-xs font-semibold text-zinc-350 transition-all active:scale-95">
+                    Demo UI
                 </a>
-                <a href="https://github.com/dinovnmw/cnodium-mc/releases" target="_blank" class="px-5 py-2.5 bg-gradient-to-r from-brand-cyan to-brand-purple hover:from-brand-cyan hover:to-brand-pink text-white rounded-xl text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-lg shadow-purple-500/10 hover:shadow-cyan-500/20 hover:scale-105">
-                    Tải Ngay
+                <a href="https://github.com/dinovnmw/cnodium-mc/releases" target="_blank" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 hover:shadow-lg hover:shadow-purple-900/20 text-white rounded-lg text-xs font-bold uppercase tracking-wider transition-all active:scale-95">
+                    Tải Về
                 </a>
             </div>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden z-10 px-6">
-        <div class="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-brand-purple/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-brand-cyan/10 rounded-full blur-[150px] pointer-events-none"></div>
-
-        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12 md:py-20">
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-16 overflow-hidden z-10 px-6">
+        <div class="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center py-12">
             <!-- Left content -->
             <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
-                <!-- Badge tag -->
-                <div class="inline-flex items-center gap-2 bg-gradient-to-r from-brand-cyan/10 via-brand-purple/10 to-brand-pink/10 border border-brand-purple/20 px-4 py-1.5 rounded-full text-xs font-medium text-brand-purple mb-8 shadow-sm">
-                    <span class="w-2 h-2 rounded-full bg-brand-cyan animate-ping"></span>
-                    <span class="tracking-wide uppercase font-semibold">Minecraft v1.8.9 Forge</span>
+                <!-- Platform Badge -->
+                <div class="inline-flex items-center gap-2 bg-zinc-900 border border-zinc-800 px-3.5 py-1.5 rounded-lg text-xs font-mono text-zinc-400 mb-6 select-none">
+                    <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                    <span class="tracking-wide uppercase font-semibold">Minecraft Forge</span>
                 </div>
 
                 <!-- Main heading -->
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-none mb-6">
-                    Trải Nghiệm <br>
-                    <span class="gradient-text drop-shadow">CNODIUM</span> Đỉnh Cao
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight leading-none text-white mb-6 select-none">
+                    Client Tối Ưu <br>
+                    <span class="text-purple-500">CNODIUM</span> v1.0
                 </h1>
 
-                <!-- Subtitle paragraph -->
-                <p class="text-base md:text-lg text-gray-400 leading-relaxed mb-10 max-w-lg">
-                    Xây dựng trên nền tảng FDP tối ưu, tích hợp các bộ bypass tiên tiến, cải thiện tối đa FPS và sở hữu thiết kế giao diện ClickGUI tối giản, đẳng cấp bậc nhất.
+                <!-- Subtitle -->
+                <p class="text-sm md:text-base text-zinc-400 leading-relaxed mb-8 max-w-lg">
+                    Phát triển dựa trên nền tảng FDP Client. Tối ưu hóa hiệu năng, cải thiện FPS ổn định, tích hợp bypass cập nhật và giao diện ClickGUI kéo thả mượt mà.
                 </p>
 
                 <!-- Action Button Group -->
-                <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                    <a href="https://github.com/dinovnmw/cnodium-mc/releases" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-brand-cyan to-brand-purple hover:from-brand-cyan hover:to-brand-pink text-white font-bold rounded-2xl shadow-xl shadow-purple-500/20 transition-all hover:-translate-y-1">
-                        <i class="fa-solid fa-cloud-arrow-down"></i> Tải Xuống Miễn Phí
+                <div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+                    <a href="https://github.com/dinovnmw/cnodium-mc/releases" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-bold text-sm rounded-xl transition-all active:scale-[0.97] hover:shadow-md hover:shadow-purple-900/10">
+                        <i class="fa-solid fa-cloud-arrow-down"></i> Tải Bản Mod (.jar)
                     </a>
-                    <a href="#demo" class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold rounded-2xl transition-all">
-                        <i class="fa-solid fa-gamepad"></i> Trải Nghiệm ClickGUI Trực Tuyến
+                    <a href="#demo" class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 text-zinc-300 text-sm font-semibold rounded-xl transition-all active:scale-[0.97]">
+                        <i class="fa-solid fa-gamepad"></i> Dùng Thử ClickGUI
                     </a>
                 </div>
 
-                <!-- Small info details -->
-                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 mt-10 text-xs text-gray-500 font-mono">
-                    <div><i class="fa-solid fa-bolt text-brand-cyan mr-1.5 animate-pulse"></i> TẢI GAME SIÊU TỐC</div>
-                    <div><i class="fa-solid fa-shield-halved text-brand-purple mr-1.5"></i> BYPASS ADAPTIVE</div>
-                    <div><i class="fa-solid fa-sliders text-brand-pink mr-1.5"></i> KHẢ NĂNG TÙY BIẾN CAO</div>
+                <!-- Technical highlights -->
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-6 mt-10 text-xs text-zinc-500 font-mono select-none">
+                    <div><i class="fa-solid fa-bolt text-purple-500 mr-1.5"></i> LOW LATENCY</div>
+                    <div><i class="fa-solid fa-shield-halved text-purple-500 mr-1.5"></i> ACTIVE BYPASS</div>
+                    <div><i class="fa-solid fa-sliders text-purple-500 mr-1.5"></i> CONFIGURABLE</div>
                 </div>
             </div>
 
-            <!-- Right Visual 3D Interactive Mockup (Lấy cảm hứng từ thực tế) -->
+            <!-- Right Visual 3D Interactive Mockup -->
             <div class="lg:col-span-5 relative flex items-center justify-center perspective-container">
-                <div class="tilt-element w-full max-w-sm glass-card rounded-3xl p-6 border-white/10 shadow-2xl">
-                    <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-12 w-32 h-32 bg-brand-cyan/20 rounded-full blur-3xl pointer-events-none"></div>
-                    
+                <div class="tilt-element w-full max-w-sm flat-card rounded-2xl p-5 border-zinc-800 shadow-xl select-none">
                     <!-- Virtual HUD Header -->
-                    <div class="flex items-center justify-between border-b border-white/5 pb-4 mb-4 font-mono text-xs" style="transform: translateZ(30px);">
-                        <span class="text-brand-cyan font-bold">CNODIUM v1.0</span>
-                        <span class="text-gray-400">FPS: <strong class="text-green-400 font-normal">240</strong></span>
+                    <div class="flex items-center justify-between border-b border-zinc-800 pb-3 mb-3 font-mono text-xs" style="transform: translateZ(20px);">
+                        <span class="text-purple-500 font-bold">CNODIUM v1.0</span>
+                        <span class="text-zinc-500">FPS: <strong class="text-green-500 font-normal">240</strong></span>
                     </div>
 
                     <!-- Client Mock modules stack -->
-                    <div class="space-y-3 font-mono text-xs" style="transform: translateZ(40px);">
-                        <div class="flex items-center justify-between p-2.5 bg-white/[0.02] rounded-lg border border-white/5 hover:bg-white/[0.04]">
-                            <span class="text-white font-semibold flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 bg-purple-500 rounded-full shadow-sm animate-pulse"></span> KillAura
+                    <div class="space-y-2 font-mono text-xs" style="transform: translateZ(30px);">
+                        <div class="flex items-center justify-between p-2 bg-zinc-900 rounded border border-zinc-800">
+                            <span class="text-zinc-200 font-medium flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span> KillAura
                             </span>
-                            <span class="text-brand-purple uppercase text-[10px] font-bold">ON</span>
+                            <span class="text-purple-500 uppercase text-[10px] font-bold">ON</span>
                         </div>
-                        <div class="flex items-center justify-between p-2.5 bg-white/[0.02] rounded-lg border border-white/5 hover:bg-white/[0.04]">
-                            <span class="text-white font-semibold flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 bg-brand-cyan rounded-full shadow-sm"></span> Fly
+                        <div class="flex items-center justify-between p-2 bg-zinc-900 rounded border border-zinc-800">
+                            <span class="text-zinc-200 font-medium flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 bg-purple-500 rounded-full"></span> Fly
                             </span>
-                            <span class="text-brand-cyan uppercase text-[10px] font-bold">ON</span>
+                            <span class="text-purple-500 uppercase text-[10px] font-bold">ON</span>
                         </div>
-                        <div class="flex items-center justify-between p-2.5 bg-white/[0.02] rounded-lg border border-white/5 hover:bg-white/[0.04]">
-                            <span class="text-white font-semibold flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 bg-gray-600 rounded-full"></span> Velocity
+                        <div class="flex items-center justify-between p-2 bg-zinc-900 rounded border border-zinc-800">
+                            <span class="text-zinc-500 font-medium flex items-center gap-2">
+                                <span class="w-1.5 h-1.5 bg-zinc-700 rounded-full"></span> Velocity
                             </span>
-                            <span class="text-gray-500 uppercase text-[10px]">OFF</span>
+                            <span class="text-zinc-600 uppercase text-[10px]">OFF</span>
                         </div>
                     </div>
 
-                    <!-- Decorative in-game mock stats -->
-                    <div class="mt-6 p-4 rounded-xl bg-black/40 border border-white/5" style="transform: translateZ(20px);">
-                        <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-brand-purple/20 flex items-center justify-center">
-                                <i class="fa-solid fa-gamepad text-brand-purple text-xs"></i>
+                    <!-- Server Mock Stats (Chuyển đổi server động) -->
+                    <div class="mt-4 p-3 rounded bg-zinc-900 border border-zinc-800 transition-colors duration-200 hover:border-zinc-700" style="transform: translateZ(10px);">
+                        <div class="flex items-center gap-3 font-mono text-xs">
+                            <div class="w-6 h-6 rounded bg-zinc-800 flex items-center justify-center">
+                                <i class="fa-solid fa-gamepad text-purple-400 text-xs"></i>
                             </div>
                             <div class="flex-1">
-                                <div class="text-[10px] text-gray-500 uppercase">Máy Chủ Hiện Tại</div>
-                                <div class="text-xs font-semibold text-white">Hypixel Network</div>
+                                <div class="text-[9px] text-zinc-500">MÁY CHỦ</div>
+                                <div class="text-zinc-300 server-fade font-semibold" id="heroServerText">Hypixel Network</div>
                             </div>
                         </div>
                     </div>
@@ -271,173 +251,175 @@
     </section>
 
     <!-- STATS COUNTER -->
-    <section class="relative py-12 z-10">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="text-center p-6 glass-card rounded-2xl hover:border-brand-cyan/30 transition-all">
-                <div class="text-4xl font-extrabold text-white mb-2 font-mono">10K+</div>
-                <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Lượt Tải Xuống</div>
+    <section class="relative py-8 z-10">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-4 select-none">
+            <div class="text-center p-4 flat-card rounded-xl hover:border-zinc-700 hover:bg-zinc-900/30 transition-all duration-300">
+                <div class="text-2xl font-bold text-white mb-1 font-mono">10K+</div>
+                <div class="text-[10px] text-zinc-500 uppercase tracking-wider font-mono">Downloads</div>
             </div>
-            <div class="text-center p-6 glass-card rounded-2xl hover:border-brand-purple/30 transition-all">
-                <div class="text-4xl font-extrabold text-white mb-2 font-mono">60+</div>
-                <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">Module Bypasses</div>
+            <div class="text-center p-4 flat-card rounded-xl hover:border-zinc-700 hover:bg-zinc-900/30 transition-all duration-300">
+                <div class="text-2xl font-bold text-white mb-1 font-mono">60+</div>
+                <div class="text-[10px] text-zinc-500 uppercase tracking-wider font-mono">Bypass Modules</div>
             </div>
-            <div class="text-center p-6 glass-card rounded-2xl hover:border-brand-pink/30 transition-all">
-                <div class="text-4xl font-extrabold text-white mb-2 font-mono">240+</div>
-                <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">FPS Tăng Thêm</div>
+            <div class="text-center p-4 flat-card rounded-xl hover:border-zinc-700 hover:bg-zinc-900/30 transition-all duration-300">
+                <div class="text-2xl font-bold text-white mb-1 font-mono">240+</div>
+                <div class="text-[10px] text-zinc-500 uppercase tracking-wider font-mono">Average FPS</div>
             </div>
-            <div class="text-center p-6 glass-card rounded-2xl hover:border-brand-cyan/30 transition-all">
-                <div class="text-4xl font-extrabold text-white mb-2 font-mono">0$</div>
-                <div class="text-xs text-gray-400 uppercase tracking-wider font-semibold">An Toàn & Miễn Phí</div>
+            <div class="text-center p-4 flat-card rounded-xl hover:border-zinc-700 hover:bg-zinc-900/30 transition-all duration-300">
+                <div class="text-2xl font-bold text-white mb-1 font-mono">0$</div>
+                <div class="text-[10px] text-zinc-500 uppercase tracking-wider font-mono">Open Source</div>
             </div>
         </div>
     </section>
 
     <!-- DETAILED FEATURES SECTION -->
-    <section id="features" class="relative py-24 z-10 px-6">
+    <section id="features" class="relative py-16 z-10 px-6">
         <div class="max-w-6xl mx-auto">
             <!-- Header section -->
-            <div class="text-center mb-16">
-                <h2 class="text-xs font-bold text-brand-cyan tracking-widest uppercase mb-3">TÍNH NĂNG VƯỢT TRỘI</h2>
-                <h3 class="text-3xl md:text-5xl font-extrabold tracking-tight">Thiết Kế Đến Sự Hoàn Hảo</h3>
-                <p class="text-sm md:text-base text-gray-400 max-w-xl mx-auto mt-4">
-                    Tại sao nên chọn CNODIUM? Chúng tôi nâng cấp toàn bộ nền tảng FDP để mang đến tốc độ render tùy chỉnh, giao diện nhạy bén và bypass tối ưu nhất.
+            <div class="text-center mb-12 select-none">
+                <h2 class="text-xs font-bold text-purple-500 tracking-wider uppercase mb-2 font-mono">CORE FEATURES</h2>
+                <h3 class="text-2xl md:text-4xl font-extrabold text-white">Chi Tiết Tính Năng</h3>
+                <p class="text-xs md:text-sm text-zinc-400 max-w-xl mx-auto mt-2">
+                    Các tinh chỉnh cốt lõi giúp cải thiện tốc độ khung hình và bypass hiệu quả nhất cho game thủ.
                 </p>
             </div>
 
             <!-- Grid details -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Card 1 -->
-                <div class="glass-card p-8 rounded-2xl hover-lift">
-                    <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 flex items-center justify-center text-brand-cyan text-xl mb-6 shadow-lg shadow-cyan-500/10">
+                <div class="flat-card p-6 rounded-xl hover-lift">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-purple-500 text-lg mb-4">
                         <i class="fa-solid fa-gauge-high"></i>
                     </div>
-                    <h4 class="text-lg font-bold text-white mb-3">Hiệu Năng Cực Hạn</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed">
-                        Tích hợp các mixin tối ưu và giảm tải dung lượng RAM tiêu thụ đến 30%, đảm bảo tốc độ khung hình (FPS) cực cao và mượt mà trên cả các dòng máy cấu hình yếu.
+                    <h4 class="text-base font-bold text-white mb-2">Tối Ưu Hiệu Năng (FPS Boost)</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">
+                        Sử dụng mixins tùy chỉnh và lược bỏ tài nguyên thừa. Giảm tiêu thụ RAM tới 30%, giữ ổn định khung hình ngay cả khi combat đông người.
                     </p>
                 </div>
                 <!-- Card 2 -->
-                <div class="glass-card p-8 rounded-2xl hover-lift">
-                    <div class="w-12 h-12 rounded-xl bg-brand-purple/10 flex items-center justify-center text-brand-purple text-xl mb-6 shadow-lg shadow-purple-500/10">
+                <div class="flat-card p-6 rounded-xl hover-lift">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-purple-500 text-lg mb-4">
                         <i class="fa-solid fa-compass-drafting"></i>
                     </div>
-                    <h4 class="text-lg font-bold text-white mb-3">Giao Diện ClickGUI Đồng Nhất</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed">
-                        Thiết kế giao diện hiện đại, tất cả danh mục module, các thanh trượt điều chỉnh, tìm kiếm thông minh được tích hợp trực quan trong một bảng duy nhất tiện lợi.
+                    <h4 class="text-base font-bold text-white mb-2">Giao Diện ClickGUI Độc Quyền</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">
+                        Bố cục phẳng gọn gàng, hỗ trợ kéo thả vị trí, tìm kiếm nhanh các module và lưu trữ cấu hình (configs) riêng của bạn.
                     </p>
                 </div>
                 <!-- Card 3 -->
-                <div class="glass-card p-8 rounded-2xl hover-lift">
-                    <div class="w-12 h-12 rounded-xl bg-brand-pink/10 flex items-center justify-center text-brand-pink text-xl mb-6 shadow-lg shadow-pink-500/10">
+                <div class="flat-card p-6 rounded-xl hover-lift">
+                    <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-purple-500 text-lg mb-4">
                         <i class="fa-solid fa-shield-cat"></i>
                     </div>
-                    <h4 class="text-lg font-bold text-white mb-3">Bypass Linh Hoạt</h4>
-                    <p class="text-sm text-gray-400 leading-relaxed">
-                        Các script được biên dịch chuẩn cho các hệ thống chống hack phổ biến. Người dùng dễ dàng điều chỉnh các tham số chiến đấu và di chuyển trực tiếp trên menu.
+                    <h4 class="text-base font-bold text-white mb-2">Hệ Thống Bypass Cập Nhật</h4>
+                    <p class="text-xs text-zinc-400 leading-relaxed">
+                        Hỗ trợ đa dạng server với các tinh chỉnh chuyên sâu cho Killaura, Speed, Fly, Velocity để phù hợp với từng hệ thống anti-cheat.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- LIVE EMULATOR SHOWCASE SECTION (Giao diện ClickGUI thực tế từ ảnh chụp) -->
-    <section id="demo" class="relative py-24 z-10 px-6 bg-black/40 border-y border-white/5">
+    <!-- LIVE EMULATOR SHOWCASE SECTION -->
+    <section id="demo" class="relative py-16 z-10 px-6 bg-zinc-950 border-y border-zinc-900">
         <div class="max-w-7xl mx-auto">
             <!-- Header -->
-            <div class="text-center mb-12">
-                <h2 class="text-xs font-bold text-brand-pink tracking-widest uppercase mb-3">LIVE WEB PREVIEW</h2>
-                <h3 class="text-3xl md:text-5xl font-extrabold tracking-tight">Trải Nghiệm Trực Tiếp ClickGUI v1.0</h3>
-                <p class="text-sm md:text-base text-gray-400 max-w-2xl mx-auto mt-4">
-                    Giao diện dưới đây chỉ mô phỏng một phần nhỏ các tính năng cơ bản của CNODIUM. Phiên bản cài đặt chính thức sở hữu hơn <strong class="text-brand-pink font-semibold">999+ Modules</strong> cực đỉnh đang chờ bạn khám phá!
+            <div class="text-center mb-10 select-none">
+                <h2 class="text-xs font-bold text-purple-500 tracking-wider uppercase mb-2 font-mono">WEB EMULATOR</h2>
+                <h3 class="text-2xl md:text-4xl font-extrabold text-white">Trình Giả Lập ClickGUI</h3>
+                <p class="text-xs md:text-sm text-zinc-400 max-w-2xl mx-auto mt-2">
+                    Giao diện giả lập dưới đây chỉ mô phỏng một phần tính năng. Hãy tải phiên bản đầy đủ để sử dụng kho lưu trữ với hơn <strong class="text-purple-400 font-semibold">999+ Modules</strong> khác nhau!
                 </p>
             </div>
 
             <!-- Virtual Simulator screen frame with sleek design -->
-            <div class="relative w-full max-w-5xl mx-auto glass-card rounded-3xl overflow-hidden border-white/10 shadow-2xl transition-all duration-300">
+            <div class="relative w-full max-w-5xl mx-auto flat-card rounded-2xl overflow-hidden border-zinc-800 shadow-lg">
                 
                 <!-- Theme Config -->
-                <div class="absolute top-4 right-4 z-20 flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/5 px-3 py-1.5 rounded-full text-[10px] font-mono">
-                    <span class="text-gray-400">CHỦ ĐỀ ACCENT</span>
+                <div class="absolute top-4 right-4 z-20 flex items-center gap-3 bg-zinc-900 border border-zinc-800 px-3 py-1.5 rounded-lg text-[10px] font-mono">
+                    <span class="text-zinc-500">CHỦ ĐỀ ACCENT</span>
                     <div class="flex gap-1.5">
-                        <button onclick="changeTheme('#a855f7', 'purple')" class="w-3.5 h-3.5 rounded-full bg-purple-500 ring-2 ring-purple-500/40 hover:scale-110 transition"></button>
-                        <button onclick="changeTheme('#06b6d4', 'cyan')" class="w-3.5 h-3.5 rounded-full bg-cyan-500 hover:scale-110 transition"></button>
-                        <button onclick="changeTheme('#ec4899', 'pink')" class="w-3.5 h-3.5 rounded-full bg-pink-500 hover:scale-110 transition"></button>
+                        <button onclick="changeTheme('#8b5cf6', 'purple')" class="w-3 h-3 rounded-full bg-purple-500 ring-2 ring-purple-500/40 hover:scale-110 active:scale-95 transition"></button>
+                        <button onclick="changeTheme('#06b6d4', 'cyan')" class="w-3 h-3 rounded-full bg-cyan-500 hover:scale-110 active:scale-95 transition"></button>
+                        <button onclick="changeTheme('#db2777', 'pink')" class="w-3 h-3 rounded-full bg-pink-500 hover:scale-110 active:scale-95 transition"></button>
                     </div>
                 </div>
 
                 <!-- Simulation viewport -->
-                <div class="relative min-h-[640px] w-full bg-[#0a0a0f] overflow-hidden select-none cursor-default" id="simViewport">
+                <div class="relative min-h-[600px] w-full bg-[#0a0a0f] overflow-hidden select-none cursor-default" id="simViewport">
                     <!-- Particle network container for emulator only -->
-                    <canvas id="simCanvas" class="absolute inset-0 z-0 opacity-40"></canvas>
+                    <canvas id="simCanvas" class="absolute inset-0 z-0 opacity-15"></canvas>
 
                     <!-- SIMULATOR HUD OVERLAYS (Top-Left Debug HUD) -->
-                    <div class="absolute top-4 left-4 z-10 pointer-events-none font-mono text-[10px] space-y-1 bg-[#111016]/80 p-3 rounded-xl border border-white/5 backdrop-blur-sm shadow-lg text-gray-300">
+                    <div class="absolute top-4 left-4 z-10 pointer-events-none font-mono text-[10px] space-y-1 bg-[#111016] p-3 rounded-lg border border-zinc-800 shadow-md text-zinc-300">
                         <div class="flex items-center gap-2 mb-1">
-                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                            <span class="text-brand-purple font-bold">DinoVNMW</span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            <span class="text-purple-400 font-bold">DinoVNMW</span>
                         </div>
-                        <div class="text-white bg-white/5 px-1 rounded inline-block">-1015 6 690</div>
-                        <div>0 Ping <span class="text-gray-500">|</span> Online 1</div>
-                        <div>Plains 15 <span class="text-gray-500">|</span> World Overworld</div>
-                        <div>TPS: <span class="text-green-400">19.00</span></div>
+                        <div class="text-white bg-zinc-800 px-1 rounded inline-block">-1015 6 690</div>
+                        <div>0 Ping <span class="text-zinc-600">|</span> Online 1</div>
+                        <div>Plains 15 <span class="text-zinc-600">|</span> World Overworld</div>
+                        <!-- Chuyển đổi server trong giả lập HUD -->
+                        <div>Máy Chủ: <span class="text-purple-400 font-semibold server-fade" id="simHudServerText">Hypixel Network</span></div>
+                        <div>TPS: <span class="text-green-500">19.00</span></div>
                     </div>
 
                     <!-- SIMULATOR ACTIVE HUD LIST (Top-Right listing) -->
-                    <div id="simHudList" class="absolute top-4 right-4 z-10 pointer-events-none flex flex-col items-end space-y-0.5 text-right font-semibold text-[11px] uppercase font-mono max-h-[400px] overflow-hidden">
+                    <div id="simHudList" class="absolute top-4 right-4 z-10 pointer-events-none flex flex-col items-end space-y-0.5 text-right font-semibold text-[10px] uppercase font-mono max-h-[400px] overflow-hidden">
                         <!-- Filled by JS -->
                     </div>
 
                     <!-- EMULATOR FLOATING CONTROLLER AT BOTTOM -->
-                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4 bg-[#111016]/90 backdrop-blur-md border border-white/10 px-4 py-2.5 rounded-2xl shadow-xl">
-                        <button id="toggleSimGuiBtn" class="flex items-center gap-2 bg-gradient-to-r from-brand-cyan to-brand-purple px-4 py-2 rounded-xl text-[11px] font-bold uppercase tracking-wider hover:opacity-90 transition shadow-lg">
+                    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 bg-[#111016] border border-zinc-800 px-3.5 py-2 rounded-xl shadow-md">
+                        <button id="toggleSimGuiBtn" class="flex items-center gap-2 bg-purple-600 hover:bg-purple-500 active:bg-purple-700 text-white px-3.5 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition active:scale-95 shadow">
                             <i class="fa-solid fa-eye-slash"></i> Ẩn/Hiện ClickGUI
                         </button>
-                        <div class="h-5 w-[1px] bg-white/10"></div>
-                        <div class="text-[10px] text-gray-400 font-mono hidden sm:block">Phím Tắt: <kbd class="px-1.5 py-0.5 bg-white/10 border border-white/20 rounded text-xs text-white">Right Shift</kbd></div>
+                        <div class="h-4 w-[1px] bg-zinc-800"></div>
+                        <div class="text-[10px] text-zinc-500 font-mono hidden sm:block">Phím tắt: <kbd class="px-1.5 py-0.5 bg-zinc-800 border border-zinc-700 rounded text-xs text-white">Right Shift</kbd></div>
                     </div>
 
-                    <!-- THE REAL CLICKGUI PANEL (Single window simulated precisely from upload) -->
-                    <div id="clickGuiWindow" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[780px] h-[440px] bg-brand-dark/95 border border-white/5 rounded-2xl shadow-2xl overflow-hidden flex z-10 pointer-events-auto tilt-element">
+                    <!-- THE REAL CLICKGUI PANEL -->
+                    <div id="clickGuiWindow" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[780px] h-[420px] bg-[#0c0c0f] border border-zinc-800 rounded-xl shadow-lg overflow-hidden flex z-10 pointer-events-auto tilt-element">
                         
                         <!-- Left Sidebar -->
-                        <div class="w-[200px] bg-brand-panel border-r border-white/[0.03] flex flex-col justify-between p-4 shrink-0">
+                        <div class="w-[190px] bg-brand-panel border-r border-zinc-800 p-4 shrink-0 flex flex-col justify-between">
                             <div class="space-y-4">
                                 <!-- App Logo -->
-                                <div class="flex items-center gap-2 px-2">
-                                    <span class="text-white font-extrabold text-sm tracking-widest font-mono">CNODIUM</span>
-                                    <span class="text-[8px] bg-brand-purple/20 text-brand-purple font-bold px-1 rounded">v1.0</span>
+                                <div class="flex items-center gap-2 px-1">
+                                    <span class="text-white font-extrabold text-xs tracking-wider font-mono">CNODIUM</span>
+                                    <span class="text-[8px] bg-purple-900/30 text-purple-400 font-bold px-1 rounded">v1.0</span>
                                 </div>
 
                                 <!-- Search Field in GUI -->
-                                <div class="relative px-2">
-                                    <input id="guiSearchInput" type="text" placeholder="Tìm kiếm module..." class="w-full bg-white/[0.03] border border-white/10 text-[10px] px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-brand-purple/60 text-white font-sans">
-                                    <i class="fa-solid fa-magnifying-glass absolute right-4 top-2 text-[10px] text-gray-500"></i>
+                                <div class="relative px-1">
+                                    <input id="guiSearchInput" type="text" placeholder="Tìm kiếm module..." class="w-full bg-zinc-900 border border-zinc-800 text-[10px] px-2.5 py-1.5 rounded-lg focus:outline-none focus:border-purple-500 transition-colors text-white font-sans">
+                                    <i class="fa-solid fa-magnifying-glass absolute right-4 top-2.5 text-[10px] text-zinc-500"></i>
                                 </div>
 
                                 <!-- Categories List -->
-                                <nav id="guiCategories" class="space-y-1 text-xs">
+                                <nav id="guiCategories" class="space-y-0.5 text-xs">
                                     <!-- Populated by JS -->
                                 </nav>
                             </div>
 
-                            <!-- Bottom User Stats & Profile (Exact replica of screenshot) -->
-                            <div class="space-y-3 pt-3 border-t border-white/[0.03] font-mono">
+                            <!-- Bottom User Stats & Profile -->
+                            <div class="space-y-2.5 pt-2.5 border-t border-zinc-800 font-mono">
                                 <!-- Status Card -->
-                                <div class="bg-black/40 p-2.5 rounded-xl border border-white/5 flex items-center justify-between text-[10px]">
+                                <div class="bg-zinc-900 p-2 rounded-lg border border-zinc-800 flex items-center justify-between text-[9px]">
                                     <div class="space-y-0.5">
-                                        <div id="guiClock" class="text-white">12:00:00</div>
-                                        <div class="text-gray-400">FPS: <span class="text-green-400">63</span></div>
-                                        <div class="text-gray-400">Act: <span id="guiActCount" class="text-brand-purple">0/0</span></div>
+                                        <div id="guiClock" class="text-zinc-300">12:00:00</div>
+                                        <div class="text-zinc-500">FPS: <span class="text-green-500">63</span></div>
+                                        <div class="text-zinc-500">Act: <span id="guiActCount" class="text-purple-400">0/0</span></div>
                                     </div>
-                                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
                                 </div>
 
                                 <!-- Profile Card -->
-                                <div class="flex items-center gap-2.5 bg-white/[0.02] p-2 rounded-xl border border-white/[0.02]">
-                                    <div class="w-7 h-7 rounded-lg mc-head shrink-0 shadow-sm"></div>
+                                <div class="flex items-center gap-2 bg-zinc-900/40 p-1.5 rounded-lg border border-zinc-800/40 hover:bg-zinc-900/80 transition-colors cursor-pointer">
+                                    <div class="w-6 h-6 rounded mc-head shrink-0 shadow-sm"></div>
                                     <div class="overflow-hidden">
-                                        <div class="text-[10px] font-bold text-white truncate">DinoVNMW</div>
-                                        <div class="text-[8px] text-gray-500">TILL: 20:05</div>
+                                        <div class="text-[9px] font-bold text-white truncate">DinoVNMW</div>
+                                        <div class="text-[8px] text-zinc-500">TILL: 20:05</div>
                                     </div>
                                 </div>
                             </div>
@@ -446,23 +428,22 @@
                         <!-- Right Panel Content -->
                         <div class="flex-1 bg-brand-panelLight flex flex-col overflow-hidden">
                             <!-- Top Bar of Content -->
-                            <div class="h-12 border-b border-white/[0.03] flex items-center justify-between px-6 shrink-0">
-                                <span class="text-xs font-bold text-gray-400 font-mono tracking-wider uppercase" id="guiCurrentCategoryTitle">Modules</span>
-                                <div class="flex items-center gap-3 text-gray-500 text-xs">
-                                    <!-- Squares pattern in image -->
-                                    <div class="flex gap-0.5 opacity-60">
-                                        <span class="w-1.5 h-1.5 bg-brand-pink rounded-sm"></span>
-                                        <span class="w-1.5 h-1.5 bg-brand-pink rounded-sm"></span>
-                                        <span class="w-1.5 h-1.5 bg-brand-pink rounded-sm"></span>
-                                        <span class="w-1.5 h-1.5 bg-brand-pink rounded-sm"></span>
+                            <div class="h-10 border-b border-zinc-800 flex items-center justify-between px-5 shrink-0 select-none">
+                                <span class="text-[10px] font-bold text-zinc-400 font-mono tracking-wider uppercase" id="guiCurrentCategoryTitle">Modules</span>
+                                <div class="flex items-center gap-3 text-zinc-500 text-xs text-zinc-400">
+                                    <div class="flex gap-0.5 opacity-40">
+                                        <span class="w-1 h-1 bg-zinc-500 rounded-sm"></span>
+                                        <span class="w-1 h-1 bg-zinc-500 rounded-sm"></span>
+                                        <span class="w-1 h-1 bg-zinc-500 rounded-sm"></span>
+                                        <span class="w-1 h-1 bg-zinc-500 rounded-sm"></span>
                                     </div>
-                                    <button class="hover:text-white transition"><i class="fa-solid fa-gear text-[11px]"></i></button>
-                                    <button class="hover:text-white transition"><i class="fa-solid fa-magnifying-glass text-[11px]"></i></button>
+                                    <button class="hover:text-white transition active:scale-90"><i class="fa-solid fa-gear text-[10px]"></i></button>
+                                    <button class="hover:text-white transition active:scale-90"><i class="fa-solid fa-magnifying-glass text-[10px]"></i></button>
                                 </div>
                             </div>
 
                             <!-- Modules Grid Container -->
-                            <div id="guiModulesGrid" class="flex-1 overflow-y-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-3 content-start gui-scrollbar">
+                            <div id="guiModulesGrid" class="flex-1 overflow-y-auto p-4 grid grid-cols-1 md:grid-cols-2 gap-2 content-start gui-scrollbar">
                                 <!-- Populated by JS -->
                             </div>
                         </div>
@@ -470,70 +451,73 @@
                     </div>
 
                     <!-- NOTIFICATIONS ALERTS INNER CONTAINER -->
-                    <div id="simNotificationContainer" class="absolute bottom-20 right-4 z-30 flex flex-col gap-2 pointer-events-none max-w-[260px]"></div>
+                    <div id="simNotificationContainer" class="absolute bottom-20 right-4 z-30 flex flex-col gap-2 pointer-events-none max-w-[240px]"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- INSTALLATION ROADMAP SECTION -->
-    <section id="install" class="relative py-24 z-10 px-6">
+    <section id="install" class="relative py-16 z-10 px-6">
         <div class="max-w-4xl mx-auto">
             <!-- Header -->
-            <div class="text-center mb-16">
-                <h2 class="text-xs font-bold text-brand-cyan tracking-widest uppercase mb-3">HƯỚNG DẪN CƠ BẢN</h2>
-                <h3 class="text-3xl md:text-5xl font-extrabold tracking-tight">Cài Đặt Dễ Dàng</h3>
-                <p class="text-sm md:text-base text-gray-400 mt-4">
-                    Bắt đầu chơi CNODIUM trong vòng chưa đầy 2 phút. Thực hiện các bước đơn giản dưới đây.
+            <div class="text-center mb-12 select-none">
+                <h2 class="text-xs font-bold text-purple-500 tracking-wider uppercase mb-2 font-mono">SETUP GUIDE</h2>
+                <h3 class="text-2xl md:text-4xl font-extrabold text-white">Hướng Dẫn Cài Đặt</h3>
+                <p class="text-xs md:text-sm text-zinc-400 mt-2">
+                    Thêm file JAR vào thư mục mods hiện tại để kích hoạt client engine trong game.
                 </p>
             </div>
 
             <!-- Steps timeline -->
-            <div class="space-y-6">
+            <div class="space-y-4">
                 <!-- Step 1 -->
-                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-6 hover:border-brand-purple/20 transition-all">
-                    <div class="w-12 h-12 rounded-full bg-brand-cyan/10 border border-brand-cyan/20 flex items-center justify-center text-brand-cyan font-bold font-mono text-lg shrink-0">
+                <div class="flat-card p-6 rounded-xl flex flex-col md:flex-row gap-6 hover:border-zinc-700 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-purple-500 font-bold font-mono text-sm shrink-0">
                         1
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold text-white mb-2">Tải Tập Tin Mod JAR</h4>
-                        <p class="text-sm text-gray-400 leading-relaxed">
-                            Lấy bản phân phối Client mới nhất. Bản tải về đã bao gồm toàn bộ hệ thống bypass và các thuật toán nâng hiệu năng khung hình.
+                        <h4 class="text-base font-bold text-white mb-1">Tải File Mod JAR</h4>
+                        <p class="text-xs text-zinc-400 leading-relaxed">
+                            Tải về bản dựng client mới nhất đã được biên dịch sẵn tại kho mã nguồn Github.
                         </p>
-                        <div class="mt-4 flex flex-wrap gap-3">
-                            <a href="https://github.com/dinovnmw/cnodium-mc/releases" target="_blank" class="px-5 py-2.5 bg-gradient-to-r from-brand-cyan to-brand-purple text-xs font-bold uppercase rounded-xl tracking-wider hover:opacity-90 transition shadow-lg shadow-purple-500/10">
-                                <i class="fa-solid fa-download mr-1"></i> Tải Bản Mod (.jar)
+                        <div class="mt-3 flex flex-wrap gap-2">
+                            <a href="https://github.com/dinovnmw/cnodium-mc/releases" target="_blank" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-xs font-bold uppercase rounded-lg tracking-wider text-white transition active:scale-95 shadow">
+                                <i class="fa-solid fa-download mr-1"></i> Download Mod (.jar)
+                            </a>
+                            <a href="https://github.com/dinovnmw/cnodium-mc" target="_blank" class="px-4 py-2 bg-zinc-900 border border-zinc-800 text-xs font-semibold rounded-lg hover:bg-zinc-800 hover:border-zinc-700 transition text-zinc-300 active:scale-95">
+                                <i class="fa-brands fa-github mr-1"></i> Source Code
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-6 hover:border-brand-purple/20 transition-all">
-                    <div class="w-12 h-12 rounded-full bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple font-bold font-mono text-lg shrink-0">
+                <div class="flat-card p-6 rounded-xl flex flex-col md:flex-row gap-6 hover:border-zinc-700 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-purple-500 font-bold font-mono text-sm shrink-0">
                         2
                     </div>
                     <div class="flex-1">
-                        <h4 class="text-lg font-bold text-white mb-2">Chuyển Vào Thư Mục Mods</h4>
-                        <p class="text-sm text-gray-400 leading-relaxed">
-                            Khởi động Launcher của bạn, chọn phiên bản chạy <strong class="text-white">1.8.9 Forge</strong>. Copy tệp `.jar` vừa tải vào thư mục mods chính thức:
+                        <h4 class="text-base font-bold text-white mb-1">Di Chuyển File Vào Thư Mục Mods</h4>
+                        <p class="text-xs text-zinc-400 leading-relaxed">
+                            Khởi chạy Minecraft phiên bản <strong class="text-white">1.8.9 với Forge</strong>. Đưa file `.jar` vừa tải vào đúng thư mục mod của launcher bạn:
                         </p>
-                        <div class="mt-3 bg-black/60 border border-white/5 p-3 rounded-xl flex items-center justify-between font-mono text-xs text-brand-cyan">
+                        <div class="mt-2.5 bg-zinc-900 border border-zinc-800 hover:border-zinc-750 transition p-2.5 rounded-lg flex items-center justify-between font-mono text-xs text-purple-400">
                             <span>%appdata%\.minecraft\mods\</span>
-                            <button onclick="copyPath()" class="text-gray-400 hover:text-white transition"><i class="fa-regular fa-copy"></i></button>
+                            <button onclick="copyPath()" class="text-zinc-500 hover:text-white transition active:scale-90"><i class="fa-regular fa-copy"></i></button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Step 3 -->
-                <div class="glass-card p-6 md:p-8 rounded-2xl flex flex-col md:flex-row gap-6 hover:border-brand-purple/20 transition-all">
-                    <div class="w-12 h-12 rounded-full bg-brand-pink/10 border border-brand-pink/20 flex items-center justify-center text-brand-pink font-bold font-mono text-lg shrink-0">
+                <div class="flat-card p-6 rounded-xl flex flex-col md:flex-row gap-6 hover:border-zinc-700 transition-all duration-300">
+                    <div class="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-purple-500 font-bold font-mono text-sm shrink-0">
                         3
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold text-white mb-2">Vào Game & Kích Hoạt Menu</h4>
-                        <p class="text-sm text-gray-400 leading-relaxed">
-                            Tham gia bất kỳ thế giới hay server nào, sau đó nhấn phím <kbd class="px-1.5 py-0.5 bg-white/10 border border-white/20 rounded font-mono text-xs text-white">Right Shift</kbd> để mở hoặc ẩn giao diện điều khiển ClickGUI.
+                        <h4 class="text-base font-bold text-white mb-1">Vào Game & Phím Kích Hoạt</h4>
+                        <p class="text-xs text-zinc-400 leading-relaxed">
+                            Tham gia thế giới đơn hoặc máy chủ bất kỳ. Nhấn nút <kbd class="px-1.5 py-0.5 bg-zinc-900 border border-zinc-800 rounded font-mono text-[10px] text-white">Right Shift</kbd> để mở menu ClickGUI điều khiển.
                         </p>
                     </div>
                 </div>
@@ -542,31 +526,71 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="relative z-10 bg-[#020104] border-t border-white/5 py-12 px-6">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer class="relative z-10 bg-[#09090b] border-t border-zinc-900 py-10 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 select-none">
             <!-- Brand -->
             <div class="flex flex-col items-center md:items-start">
-                <span class="font-extrabold text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-pink">CNODIUM</span>
-                <span class="text-[10px] text-gray-500 font-mono uppercase tracking-widest mt-1">Elevate Your Gameplay</span>
+                <span class="font-extrabold text-lg tracking-wider text-white">CNODIUM</span>
+                <span class="text-[9px] text-zinc-600 font-mono uppercase tracking-widest mt-0.5">Cheat Client</span>
             </div>
 
             <!-- Copyright notices -->
-            <div class="text-center md:text-left text-xs text-gray-500">
-                &copy; 2026 CNODIUM. Bảo lưu mọi quyền. <br class="md:hidden"> Phát triển trên mã nguồn nền tảng FDP. Không thuộc quản lý của Mojang Studios.
+            <div class="text-center md:text-left text-xs text-zinc-600">
+                &copy; 2026 CNODIUM. Bảo lưu mọi quyền. <br class="md:hidden"> Phát triển dựa trên nền tảng FDP. Không trực thuộc Mojang Studios.
             </div>
 
             <!-- Quick socials -->
-            <div class="flex gap-4 text-gray-400">
-                <a href="#" class="hover:text-brand-cyan transition-colors text-lg"><i class="fa-brands fa-discord"></i></a>
-                <a href="#" class="hover:text-brand-purple transition-colors text-lg"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#" class="hover:text-brand-pink transition-colors text-lg"><i class="fa-brands fa-twitter"></i></a>
+            <div class="flex gap-4 text-zinc-500">
+                <a href="#" class="hover:text-purple-500 transition-colors text-base active:scale-90"><i class="fa-brands fa-discord"></i></a>
+                <a href="#" class="hover:text-purple-500 transition-colors text-base active:scale-90"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="hover:text-purple-500 transition-colors text-base active:scale-90"><i class="fa-brands fa-twitter"></i></a>
             </div>
         </div>
     </footer>
 
     <!-- SCRIPTS AND SIMULATOR LOGIC -->
     <script>
-        // Hàm copy đường dẫn
+        // --- CHUYỂN ĐỔI MÁY CHỦ ĐỘNG (SERVER CAROUSEL) ---
+        const serverList = [
+            'Hypixel Network',
+            'DonutSMP',
+            '3fmc Network',
+            'LuckyMC',
+            'BlocksMC',
+            'HeoMC'
+            'SMP Sever'
+            'Bedwars Sever'
+        ];
+        let currentServerIndex = 0;
+
+        function updateServerTick() {
+            const heroServerEl = document.getElementById('heroServerText');
+            const simServerEl = document.getElementById('simHudServerText');
+            
+            currentServerIndex = (currentServerIndex + 1) % serverList.length;
+            const nextServerName = serverList[currentServerIndex];
+
+            // Hiệu ứng mờ dần (Fade out)
+            if (heroServerEl) heroServerEl.style.opacity = '0';
+            if (simServerEl) simServerEl.style.opacity = '0';
+
+            setTimeout(() => {
+                // Thay đổi tên và hiện lại (Fade in)
+                if (heroServerEl) {
+                    heroServerEl.innerText = nextServerName;
+                    heroServerEl.style.opacity = '1';
+                }
+                if (simServerEl) {
+                    simServerEl.innerText = nextServerName;
+                    simServerEl.style.opacity = '1';
+                }
+            }, 300);
+        }
+        
+        // Cứ mỗi 3 giây sẽ tự động chuyển đổi sang máy chủ tiếp theo
+        setInterval(updateServerTick, 3000);
+
+        // Copy directory path function
         function copyPath() {
             const el = document.createElement('textarea');
             el.value = '%appdata%\\.minecraft\\mods\\';
@@ -575,10 +599,10 @@
             document.execCommand('copy');
             document.body.removeChild(el);
             
-            createSimNotification('Đã Copy', 'Đường dẫn thư mục đã được sao chép!', 'success');
+            createSimNotification('Copied', 'Đường dẫn thư mục đã được sao chép!', 'success');
         }
 
-        // --- 3D TILT EFFECT CHO MOCKUP LANDING ---
+        // --- 3D TILT EFFECT ---
         const tiltElements = document.querySelectorAll('.tilt-element');
         tiltElements.forEach(el => {
             el.addEventListener('mousemove', e => {
@@ -587,13 +611,12 @@
                 const y = e.clientY - rect.top;
                 const xc = rect.width / 2;
                 const yc = rect.height / 2;
-                const angleX = (yc - y) / 10;
-                const angleY = (x - xc) / 10;
+                const angleX = (yc - y) / 12;
+                const angleY = (x - xc) / 12;
                 
-                el.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.02, 1.02, 1.02)`;
+                el.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.01, 1.01, 1.01)`;
                 if (el.id === 'clickGuiWindow') {
-                    // Dành riêng cho bảng mô phỏng ClickGUI
-                    el.style.transform = `perspective(1500px) rotateX(${angleX/1.5}deg) rotateY(${angleY/1.5}deg)`;
+                    el.style.transform = `perspective(1500px) rotateX(${angleX/1.8}deg) rotateY(${angleY/1.8}deg)`;
                 }
             });
             
@@ -606,22 +629,21 @@
             });
         });
 
-        // --- EMULATOR ACCENT THEME CONFIG ---
-        let currentThemeColor = '#a855f7'; // Mặc định là tím như ảnh gốc
+        // --- EMULATOR THEME COLOR CONFIG ---
+        let currentThemeColor = '#8b5cf6'; 
         let currentThemeName = 'purple';
 
         function changeTheme(color, name) {
             currentThemeColor = color;
             currentThemeName = name;
             
-            // Cập nhật giao diện của ClickGUI
             renderCategories();
             renderModulesGrid();
             updateSimHUD();
-            createSimNotification('Thay đổi chủ đề', `Đã chuyển đổi gam màu sang ${name.toUpperCase()}`, 'success');
+            createSimNotification('Theme Updated', `Đã chuyển đổi gam màu sang ${name.toUpperCase()}`, 'success');
         }
 
-        // --- 3D DEPTH PARTICLES ANIMATION BACKGROUND ---
+        // --- PARTICLES GRID BACKGROUND ---
         const bgCanvas = document.getElementById('bgCanvas');
         const bgCtx = bgCanvas.getContext('2d');
         const simCanvas = document.getElementById('simCanvas');
@@ -644,10 +666,10 @@
                     x: Math.random() * w,
                     y: Math.random() * h,
                     z: Math.random() * 1.5 + 0.5,
-                    size: Math.random() * 2 + 1,
-                    vx: (Math.random() - 0.5) * 0.8,
-                    vy: (Math.random() - 0.5) * 0.8,
-                    alpha: Math.random() * 0.3 + 0.15
+                    size: Math.random() * 1.5 + 0.8,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    alpha: Math.random() * 0.2 + 0.1
                 });
             }
         }
@@ -655,10 +677,10 @@
         function drawParticles(ctx, array, w, h, themeColor) {
             ctx.clearRect(0, 0, w, h);
             
-            // Grid lines ẩn sâu
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.005)';
+            // Subtle flat grid lines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.003)';
             ctx.lineWidth = 1;
-            const grid = 75;
+            const grid = 80;
             for(let x=0; x < w; x+=grid) {
                 ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,h); ctx.stroke();
             }
@@ -666,17 +688,17 @@
                 ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke();
             }
 
-            // Kết nối các hạt
+            // Simple Flat connection lines
             for (let a = 0; a < array.length; a++) {
                 for (let b = a + 1; b < array.length; b++) {
                     const dx = array[a].x - array[b].x;
                     const dy = array[a].y - array[b].y;
                     const dist = Math.sqrt(dx*dx + dy*dy);
                     
-                    if (dist < 100) {
+                    if (dist < 90) {
                         const avgZ = (array[a].z + array[b].z) / 2;
-                        ctx.strokeStyle = `rgba(${hexToRgb(themeColor)}, ${(1 - dist/100) * 0.1 * avgZ})`;
-                        ctx.lineWidth = 0.5 * avgZ;
+                        ctx.strokeStyle = `rgba(${hexToRgb(themeColor)}, ${(1 - dist/90) * 0.06 * avgZ})`;
+                        ctx.lineWidth = 0.5;
                         ctx.beginPath();
                         ctx.moveTo(array[a].x, array[a].y);
                         ctx.lineTo(array[b].x, array[b].y);
@@ -685,11 +707,11 @@
                 }
             }
 
-            // Vẽ các hạt
+            // Render particles
             array.forEach(p => {
                 ctx.fillStyle = `rgba(${hexToRgb(themeColor)}, ${p.alpha * p.z})`;
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size * p.z, 0, Math.PI*2);
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
                 ctx.fill();
 
                 p.x += p.vx * p.z;
@@ -708,14 +730,13 @@
             return `${r}, ${g}, ${b}`;
         }
 
-        // Vòng lặp vẽ liên tục
         function animateLoop() {
             drawParticles(bgCtx, mainParticles, bgCanvas.width, bgCanvas.height, currentThemeColor);
             drawParticles(simCtx, simParticles, simCanvas.width, simCanvas.height, currentThemeColor);
             requestAnimationFrame(animateLoop);
         }
 
-        // --- DANH SÁCH MODULES TỪ CHỤP ẢNH MINECRAFT THỰC TẾ ---
+        // --- CLIENT MODULES DATA ---
         const categories = [
             { id: 'combat', name: 'Combat', icon: 'fa-swords' },
             { id: 'movement', name: 'Movement', icon: 'fa-person-running' },
@@ -781,7 +802,7 @@
         let selectedCategory = 'combat';
         let searchQuery = '';
 
-        // Render Tabs danh mục bên Sidebar trái
+        // Render Sidebar tabs in GUI (Thêm hiệu ứng active:scale vật lý)
         function renderCategories() {
             const container = document.getElementById('guiCategories');
             container.innerHTML = '';
@@ -789,18 +810,17 @@
             categories.forEach(cat => {
                 const isActive = cat.id === selectedCategory;
                 const tab = document.createElement('button');
-                tab.className = `w-full flex items-center gap-3 px-3.5 py-2 rounded-xl text-left transition-all font-mono tracking-wide ${
+                tab.className = `w-full flex items-center gap-3 px-3 py-1.5 rounded-lg text-left transition-all font-mono tracking-wide active:scale-[0.97] duration-150 ${
                     isActive 
-                        ? 'text-white font-semibold shadow-md' 
-                        : 'text-gray-400 hover:text-gray-200 hover:bg-white/[0.02]'
+                        ? 'text-white font-semibold' 
+                        : 'text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.01]'
                 }`;
                 
-                // Set background màu theme khi tab hoạt động
                 if (isActive) {
-                    tab.style.backgroundColor = `${currentThemeColor}18`;
-                    tab.style.borderLeft = `3px solid ${currentThemeColor}`;
+                    tab.style.backgroundColor = `${currentThemeColor}12`;
+                    tab.style.borderLeft = `2px solid ${currentThemeColor}`;
                 } else {
-                    tab.style.borderLeft = `3px solid transparent`;
+                    tab.style.borderLeft = `2px solid transparent`;
                 }
 
                 tab.innerHTML = `
@@ -819,12 +839,11 @@
             });
         }
 
-        // Render lưới Modules bên tay phải
+        // Render Modules grid in GUI (Thêm hiệu ứng hover viền và active scale bấm)
         function renderModulesGrid() {
             const grid = document.getElementById('guiModulesGrid');
             grid.innerHTML = '';
 
-            // Lọc theo Danh mục và Ô tìm kiếm
             const filtered = modules.filter(m => {
                 const matchesCat = m.category === selectedCategory;
                 const matchesSearch = m.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
@@ -835,14 +854,13 @@
             if (filtered.length === 0) {
                 grid.innerHTML = `
                     <div class="col-span-2 py-8 flex flex-col items-center justify-center text-center">
-                        <div class="text-[11px] font-bold text-white font-mono flex items-center gap-1.5 justify-center mb-1">
-                            <i class="fa-solid fa-sparkles text-brand-purple animate-pulse"></i>
+                        <div class="text-[10px] font-bold text-white font-mono flex items-center gap-1.5 justify-center mb-1">
                             <span>VÀ CÒN 999+ MODULES KHÁC!</span>
                         </div>
-                        <p class="text-[9px] text-gray-500 max-w-[340px] font-sans leading-relaxed mb-4">
-                            Không tìm thấy module này trong bản demo Web. Tải bản Client chính thức để sở hữu đầy đủ bộ công cụ tối thượng của CNODIUM.
+                        <p class="text-[9px] text-zinc-500 max-w-[340px] font-sans leading-relaxed mb-4">
+                            Không tìm thấy module này trong bản demo Web. Tải bản Client chính thức để sở hữu đầy đủ bộ công cụ của CNODIUM.
                         </p>
-                        <a href="https://github.com/dinovnmw/cnodium-mc/releases" target="_blank" class="px-4 py-2 bg-gradient-to-r from-brand-cyan to-brand-purple hover:from-brand-cyan hover:to-brand-pink text-[10px] font-bold uppercase rounded-lg tracking-wider hover:scale-105 transition duration-300 text-white shadow-md shadow-purple-500/10">Tải Bản Full</a>
+                        <a href="https://github.com/dinovnmw/cnodium-mc/releases" target="_blank" class="px-4 py-2 bg-zinc-800 border border-zinc-700 hover:bg-zinc-750 hover:border-zinc-650 transition active:scale-95 text-[10px] font-bold uppercase rounded-lg tracking-wider text-white">Tải Bản Full</a>
                     </div>
                 `;
                 return;
@@ -850,39 +868,34 @@
 
             filtered.forEach(mod => {
                 const card = document.createElement('div');
+                let baseClass = 'p-3 bg-white/[0.01] border border-zinc-800/85 rounded-xl flex items-start justify-between cursor-pointer hover:bg-white/[0.03] hover:border-zinc-700 transition-all duration-150 active:scale-[0.98] select-none ';
                 
-                // Class styling mô phỏng card thực tế
-                let baseClass = 'p-3 bg-white/[0.02] border border-white/5 rounded-xl flex items-start justify-between cursor-pointer hover:bg-white/[0.04] hover:border-white/10 transition-all select-none ';
-                
-                // Nếu module được bật thì áp dụng viền màu theme (như Criticals trong ảnh)
                 if (mod.enabled) {
                     card.className = baseClass + 'border-l-2';
                     card.style.borderLeftColor = currentThemeColor;
-                    card.style.backgroundColor = `${currentThemeColor}06`;
+                    card.style.backgroundColor = `${currentThemeColor}05`;
                 } else {
                     card.className = baseClass + 'border-l';
                 }
 
                 card.innerHTML = `
                     <div class="flex-1 pr-3">
-                        <div class="text-[11px] font-bold ${mod.enabled ? 'text-white' : 'text-gray-300'} font-mono">${mod.name}</div>
-                        <div class="text-[9px] text-gray-500 mt-0.5 font-sans leading-normal">${mod.desc}</div>
+                        <div class="text-[11px] font-bold ${mod.enabled ? 'text-white' : 'text-zinc-400'} font-mono">${mod.name}</div>
+                        <div class="text-[9px] text-zinc-500 mt-0.5 font-sans leading-normal">${mod.desc}</div>
                     </div>
                     <div class="flex items-center pt-0.5 shrink-0">
-                        <span class="w-3.5 h-3.5 rounded-full border border-white/20 flex items-center justify-center transition">
-                            <span class="w-2.5 h-2.5 rounded-full transition-all" style="background-color: ${mod.enabled ? currentThemeColor : 'transparent'}"></span>
+                        <span class="w-3.5 h-3.5 rounded-full border border-zinc-850 flex items-center justify-center transition duration-150">
+                            <span class="w-2 h-2 rounded-full transition-all duration-150" style="background-color: ${mod.enabled ? currentThemeColor : 'transparent'}"></span>
                         </span>
                     </div>
                 `;
 
-                // Logic bật tắt module
                 card.addEventListener('click', () => {
                     mod.enabled = !mod.enabled;
                     
-                    // Phát đi thông báo và cập nhật HUD
                     createSimNotification(
-                        mod.enabled ? 'Đã kích hoạt' : 'Đã tắt',
-                        `Module ${mod.name} hiện đã ${mod.enabled ? 'bật' : 'tắt'}.`,
+                        mod.enabled ? 'Enabled' : 'Disabled',
+                        `${mod.name} is now ${mod.enabled ? 'active' : 'inactive'}.`,
                         mod.enabled ? 'success' : 'info'
                     );
 
@@ -894,107 +907,98 @@
                 grid.appendChild(card);
             });
 
-            // Thêm banner thông báo 999+ Modules ở cuối khi không tìm kiếm
+            // Footer info layout card inside ClickGUI
             if (searchQuery === '') {
                 const footerCard = document.createElement('div');
-                footerCard.className = 'col-span-1 md:col-span-2 mt-4 p-4 rounded-xl border border-dashed border-brand-purple/30 bg-brand-purple/5 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left';
+                footerCard.className = 'col-span-1 md:col-span-2 mt-4 p-4 rounded-xl border border-dashed border-zinc-800 bg-zinc-900/30 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left hover:border-zinc-700 transition-colors duration-200';
                 footerCard.innerHTML = `
                     <div class="flex-1">
-                        <div class="text-xs font-bold text-white font-mono flex items-center gap-1.5 justify-center sm:justify-start">
-                            <i class="fa-solid fa-sparkles text-brand-purple animate-pulse"></i>
+                        <div class="text-[11px] font-bold text-white font-mono flex items-center gap-1.5 justify-center sm:justify-start">
                             <span>VÀ CÒN 999+ MODULES KHÁC!</span>
                         </div>
-                        <p class="text-[10px] text-gray-400 mt-1 leading-relaxed">Trình giả lập web chỉ hiển thị một phần nhỏ các tính năng tiêu biểu. Tải bản Client chính thức để trải nghiệm toàn bộ kho module tối thượng của chúng tôi.</p>
+                        <p class="text-[9px] text-zinc-500 mt-1 leading-relaxed">Trình giả lập chỉ hiển thị một phần các tính năng cơ bản. Tải bản Client đầy đủ trên Github để sử dụng toàn bộ thư viện.</p>
                     </div>
-                    <a href="https://github.com/dinovnmw/cnodium-mc/releases" target="_blank" class="px-4 py-2 bg-gradient-to-r from-brand-cyan to-brand-purple hover:from-brand-cyan hover:to-brand-pink text-[10px] font-bold uppercase rounded-lg tracking-wider hover:scale-105 transition duration-300 shrink-0 text-white shadow-md shadow-purple-500/10">Tải Bản Full</a>
+                    <a href="https://github.com/dinovnmw/cnodium-mc/releases" target="_blank" class="px-4 py-2 bg-zinc-800 border border-zinc-700 hover:bg-zinc-750 transition active:scale-95 text-[10px] font-bold uppercase rounded-lg tracking-wider text-white shrink-0">Tải Bản Full</a>
                 `;
                 grid.appendChild(footerCard);
             }
         }
 
-        // Cập nhật số lượng module đang hoạt động trên tổng số
+        // Active counter updates
         function updateActCounter() {
             const activeCount = modules.filter(m => m.enabled).length;
             document.getElementById('guiActCount').innerText = `${activeCount}/${modules.length}`;
         }
 
-        // Cập nhật in-game Active HUD ở phía trên bên phải (Xếp từ dài nhất tới ngắn nhất, có dải màu gradient)
+        // Game HUD mock updates
         function updateSimHUD() {
             const list = document.getElementById('simHudList');
             list.innerHTML = '';
 
             const active = modules.filter(m => m.enabled);
-            
-            // Xếp chữ từ dài nhất tới ngắn nhất giống hệt Minecraft Client gốc
             active.sort((a,b) => b.name.length - a.name.length);
 
             active.forEach(mod => {
                 const el = document.createElement('div');
-                el.className = 'px-2 py-0.5 border-r-[3px] transition-all duration-300 bg-black/40 backdrop-blur-sm';
+                el.className = 'px-2 py-0.5 border-r-[2px] transition-all duration-300 bg-black/60 hover:translate-x-[-2px] cursor-pointer';
                 el.style.borderColor = currentThemeColor;
                 el.style.color = currentThemeColor;
-                el.style.textShadow = `0 0 8px ${currentThemeColor}55`;
-                el.style.background = `linear-gradient(to left, ${currentThemeColor}15, transparent)`;
+                el.style.background = `linear-gradient(to left, ${currentThemeColor}0c, transparent)`;
                 
-                // Tùy chỉnh tên hiển thị một chút để mang chất Minecraft
                 el.innerText = mod.name + (mod.name === 'KillAura' ? ' Switch' : (mod.name === 'Criticals' ? ' Jump' : ''));
-                
                 list.appendChild(el);
             });
         }
 
-        // Thông báo lơ lửng giả lập ở góc màn hình game
+        // Custom toast logic inside emulator
         const notifyContainer = document.getElementById('simNotificationContainer');
         function createSimNotification(title, message, type) {
             const n = document.createElement('div');
-            let icon = 'fa-info-circle text-cyan-400';
-            let border = 'border-cyan-500/20';
+            let icon = 'fa-info-circle text-zinc-400';
+            let border = 'border-zinc-800';
 
             if (type === 'success') {
-                icon = 'fa-check-circle text-emerald-400';
-                border = 'border-emerald-500/20';
+                icon = 'fa-check-circle text-green-400';
+                border = 'border-zinc-800';
             }
 
-            n.className = `gui-notification flex items-start gap-2.5 bg-brand-dark/95 backdrop-blur-md border ${border} px-4 py-3 rounded-xl pointer-events-auto shadow-lg max-w-[240px]`;
+            n.className = `gui-notification flex items-start gap-2.5 bg-[#111016] border ${border} px-4 py-3 rounded-lg pointer-events-auto shadow-md max-w-[240px] hover:border-zinc-700 transition-colors`;
             n.innerHTML = `
                 <i class="fa-solid ${icon} mt-0.5 text-xs shrink-0"></i>
                 <div class="flex flex-col overflow-hidden">
                     <span class="text-[10px] font-bold text-white uppercase font-mono">${title}</span>
-                    <span class="text-[9px] text-gray-400 mt-0.5 truncate">${message}</span>
+                    <span class="text-[9px] text-zinc-500 mt-0.5 truncate">${message}</span>
                 </div>
             `;
             notifyContainer.appendChild(n);
             setTimeout(() => { n.remove(); }, 2500);
         }
 
-        // Ô tìm kiếm nhanh
+        // Live Search logic
         const guiSearchInput = document.getElementById('guiSearchInput');
         guiSearchInput.addEventListener('input', (e) => {
             searchQuery = e.target.value;
             renderModulesGrid();
         });
 
-        // Kéo thả toàn bộ ClickGUI Window trong màn hình giả lập
+        // ClickGUI window drag mechanics
         const clickGuiWindow = document.getElementById('clickGuiWindow');
         const viewport = document.getElementById('simViewport');
         let isDragging = false;
         let startX, startY, initialLeft, initialTop;
 
         clickGuiWindow.addEventListener('mousedown', (e) => {
-            // Không kích hoạt kéo thả nếu click vào các nút bấm, input hoặc cuộn danh sách
             if (e.target.closest('button') || e.target.closest('input') || e.target.closest('.gui-scrollbar')) return;
             
             isDragging = true;
             startX = e.clientX;
             startY = e.clientY;
             
-            // Lấy vị trí Left/Top hiện tại của bảng điều khiển
             const rect = clickGuiWindow.getBoundingClientRect();
             const viewRect = viewport.getBoundingClientRect();
             initialLeft = rect.left - viewRect.left;
             initialTop = rect.top - viewRect.top;
 
-            // Xóa đi thuộc tính translate để điều hướng chuẩn bằng pixel
             clickGuiWindow.style.transform = 'none';
             clickGuiWindow.style.left = `${initialLeft}px`;
             clickGuiWindow.style.top = `${initialTop}px`;
@@ -1011,7 +1015,6 @@
             let newLeft = initialLeft + dx;
             let newTop = initialTop + dy;
 
-            // Giới hạn biên di chuyển trong màn mô phỏng
             if (newLeft < 0) newLeft = 0;
             if (newTop < 0) newTop = 0;
             if (newLeft + clickGuiWindow.clientWidth > viewport.clientWidth) newLeft = viewport.clientWidth - clickGuiWindow.clientWidth;
@@ -1027,7 +1030,7 @@
             document.removeEventListener('mouseup', stopDrag);
         }
 
-        // Nút Toggle ẩn hiện ClickGUI v1.0
+        // Toggle HUD on web simulation
         const toggleBtn = document.getElementById('toggleSimGuiBtn');
         let guiVisible = true;
 
@@ -1036,37 +1039,36 @@
             if (guiVisible) {
                 clickGuiWindow.style.opacity = '1';
                 clickGuiWindow.style.pointerEvents = 'auto';
-                createSimNotification('Đã Hiện Menu', 'Giao diện ClickGUI CNODIUM đã hoạt động trở lại.', 'success');
+                createSimNotification('ClickGUI', 'Menu is now visible.', 'success');
             } else {
                 clickGuiWindow.style.opacity = '0';
                 clickGuiWindow.style.pointerEvents = 'none';
-                createSimNotification('Đã Ẩn Menu', 'Sử dụng nút bấm bên dưới hoặc phím Right Shift để mở lại.', 'info');
+                createSimNotification('ClickGUI', 'Menu is hidden.', 'info');
             }
         }
         toggleBtn.addEventListener('click', toggleGui);
 
-        // Kích hoạt nút bấm phím cơ học Right Shift để đóng/mở ClickGUI
+        // Right Shift Key binding support
         window.addEventListener('keydown', (e) => {
-            if (e.key === 'Shift' && e.location === 2) { // 2 = Right Shift
+            if (e.key === 'Shift' && e.location === 2) { 
                 e.preventDefault();
                 toggleGui();
             }
         });
 
-        // --- KHỞI TẠO HỆ THỐNG TRANG WEB ---
+        // --- GLOBAL INITIALIZATION ---
         window.onload = function() {
             resizeCanvas();
-            createParticles(mainParticles, 65, bgCanvas.width, bgCanvas.height);
-            createParticles(simParticles, 35, simCanvas.width, simCanvas.height);
+            createParticles(mainParticles, 60, bgCanvas.width, bgCanvas.height);
+            createParticles(simParticles, 30, simCanvas.width, simCanvas.height);
             
-            // Chạy dữ liệu emulator
             renderCategories();
             renderModulesGrid();
             updateSimHUD();
             updateActCounter();
             animateLoop();
 
-            // Đồng hồ góc trái ClickGUI
+            // Real-time HUD Clock updating
             setInterval(() => {
                 const now = new Date();
                 const clockStr = now.toTimeString().split(' ')[0];
@@ -1077,8 +1079,8 @@
 
         window.addEventListener('resize', () => {
             resizeCanvas();
-            createParticles(mainParticles, 65, bgCanvas.width, bgCanvas.height);
-            createParticles(simParticles, 35, simCanvas.width, simCanvas.height);
+            createParticles(mainParticles, 60, bgCanvas.width, bgCanvas.height);
+            createParticles(simParticles, 30, simCanvas.width, simCanvas.height);
         });
 
     </script>
